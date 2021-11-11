@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Studentform/style.css">
+    <title>Registration Form</title>
+
+</head>
+
+<body>
+    <script>
+        function logInfo() {
+            event.preventDefault()
+
+            var name = JSON.stringify(document.getElementById('name').value) //Here Stringify is not required 
+            var age = JSON.stringify(document.getElementById('age').value)  //Here Stringify is not required
+            var clas = JSON.stringify(document.getElementById('clas').value)  //Here Stringify is not required
+            var section = JSON.stringify(document.getElementById('section').value)  //Here Stringify is not required
+            var regiNumb = JSON.stringify(document.getElementById('regiNumb').value)  //Here Stringify is not required
+            var idCard = JSON.stringify(document.getElementById('idCard').value)  //Here Stringify is not required
+
+
+            if (name && age && clas && section && regiNumb && idCard != '""') {
+                const userInfo = [name, age, clas, section, regiNumb, idCard]
+                JSON.stringify(localStorage.setItem(userInfo, userInfo))
+                // console.log(userInfo)
+
+                document.getElementById("nosucess").style.display = 'none'
+                document.getElementById("name").style.borderColor = 'rgb(255, 108, 10)'
+                document.getElementById("age").style.borderColor = 'rgb(255, 108, 10)'
+            } else {
+                document.getElementById("name").style.borderColor = 'red'
+                document.getElementById("age").style.borderColor = 'red'
+                document.getElementById("nosucess").style.display = 'block'
+
+                document.getElementById("clas").style.borderColor = 'red'
+                document.getElementById("section").style.borderColor = 'red'
+                document.getElementById("regiNumb").style.borderColor = 'red'
+                document.getElementById("idCard").style.borderColor = 'red'
+            }
+
+        }
+    </script>
+    <div class="pDiv">
+        <h1 class="heading">Student Form</h1>
+        <br>
+        <form action="" onsubmit="logInfo()">
+            <label for="name" class="fName">Name</label>
+            <br>
+            <input type="text" name="name" class="error" placeholder="Please enter your name" id="name">
+            </br></br>
+            <label for="age" class="fName">Age</label>
+            <br>
+            <input type="text" name="age" class="error" placeholder="Please enter your age" id="age">
+            </br></br>
+           <label for="clas" class="fName" >Class</label>
+            <br>
+            <input type="text" name="clas" class="error" id="clas">
+            </br></br>
+            <label for="section" class="fName">Section</label>
+            <br>
+            <input type="text" name="section" class="error" id="section" >
+            </br></br>
+            <label for="regiNumb" class="fName">Registration Number</label>
+            <br>
+            <input type="text" name="regiNumb" class="error" id="regiNumb">
+            </br></br>
+            <label for="idCard" class="fName">ID Card</label>
+            <br>
+            <input type="text" name="idCard" class="error" id="idCard" >
+            </br></br>
+
+            <input type="submit" value="Submit" class="btn">
+        </form>
+        <div class="nosucess" id="nosucess">
+            <p>You have entered wrong on one or multiple instences</p>
+        </div>
+    </div>
+</body>
+
+</html>
